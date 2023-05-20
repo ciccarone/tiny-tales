@@ -1,8 +1,7 @@
 <?php
     // Path: src/app.php
 
-    // define the root directory variable
-    define('DIR_ROOT', dirname(__DIR__, 1) . '/');
+
 
     // define the vendor directory variable & load the composer autoloader
     define('DIR_VENDOR', DIR_ROOT . '/vendor/');
@@ -19,10 +18,24 @@
     $yourApiKey = getenv('OPENAI_KEY');
     $client = OpenAI::client($yourApiKey);
 
-    
-    // $result = $client->completions()->create([
-    //     'model' => 'text-davinci-003',
-    //     'prompt' => 'Tiny Tales is',
-    // ]);
+    function function_get_output($fn)
+    {
+        $args = func_get_args();
+        unset($args[0]);
+        ob_start();
+        call_user_func_array($fn, $args);
+        $output = ob_get_contents();
+        ob_end_clean();
+        return $output;
+    }
 
-    // echo $result['choices'][0]['text'];
+    function display($template, $params = array())
+    {
+        extract($params);
+        include $template;
+    }
+
+    function render($template, $params = array())
+    {
+        return function_get_output('display', $template, $params);
+    }

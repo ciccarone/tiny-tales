@@ -1,0 +1,130 @@
+{
+    "version": "1.0.0",
+    "holidays": [
+        {
+            "name": "Christmas"
+        },
+        {
+            "name": "Halloween"
+        },
+        {
+            "name": "Thanksgiving"
+        },
+        {
+            "name": "Easter"
+        },
+        {
+            "name": "Valentine's Day"
+        },
+        {
+            "name": "Fourth of July"
+        },
+        {
+            "name": "Hanukkah"
+        },
+        {
+            "name": "Chinese New Year"
+        },
+        {
+            "name": "St. Patrick's Day"
+        },
+        {
+            "name": "New Year's Eve"
+        },
+        {
+            "name": "Mother's Day"
+        },
+        {
+            "name": "Father's Day"
+        },
+        {
+            "name": "Earth Day"
+        },
+        {
+            "name": "Cinco de Mayo"
+        },
+        {
+            "name": "Labor Day"
+        },
+        {
+            "name": "Memorial Day"
+        },
+        {
+            "name": "Veterans Day"
+        },
+        {
+            "name": "International Women's Day"
+        },
+        {
+            "name": "International Day of Peace"
+        },
+        {
+            "name": "World Health Day"
+        },
+        {
+            "name": "World Children's Day"
+        },
+        {
+            "name": "World Environment Day"
+        },
+        {
+            "name": "World Animal Day"
+        }
+    ],
+    "morals": [
+        {
+            "name": "Honesty"
+        },
+        {
+            "name": "Respect"
+        },
+        {
+            "name": "Sharing"
+        },
+        {
+            "name": "Listening"
+        },
+        {
+            "name": "Work"
+        },
+        {
+            "name": "Resilience"
+        },
+        {
+            "name": "Judging"
+        },
+        {
+            "name": "Sorry"
+        },
+        {
+            "name": "Responsibility"
+        },
+        {
+            "name": "Grateful"
+        },
+        {
+            "name": "Help"
+        },
+        {
+            "name": "Faith"
+        },
+        {
+            "name": "Confidence"
+        },
+        {
+            "name": "Truthfulness"
+        },
+        {
+            "name": "Kindness"
+        },
+        {
+            "name": "Patience"
+        },
+        {
+            "name": "Safety"
+        },
+        {
+            "name": "Appreciation"
+        }
+    ]
+}

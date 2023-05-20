@@ -1,3 +1,23 @@
+:root {
+    --main-bg-color: #253a58;
+    --main-padding: 2.22rem;
+    --main-border-radius: .6rem;
+}
+
 body {
-background-color: #222;
+    background-color: var(--main-bg-color);
+}
+
+.app {
+    background-color: #fff;
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: var(--main-padding);
+    border-radius: var(--main-border-radius);
+}
+
+.logo {
+    max-width: 444px;
+    margin: 0 auto;
+    display: block;
 }
