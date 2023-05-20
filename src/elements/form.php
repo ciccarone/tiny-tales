@@ -42,23 +42,23 @@ foreach ($prompts as $prompt) {
 
 ?>
 
-<form action="./story#story" method="POST">
+<form action="/story/index.php#story" method="POST" id="tiny-tales">
     <div class="form-group mb-3">
         <label for="MainCharacter">Child's Name</label>
-        <input type="text" class="form-control" id="MainCharacter" name="MainCharacter" value="<?php echo (isset($_POST['MainCharacter'])) ? $_POST['MainCharacter'] : 'Landon'; ?>">
+        <input type="text" class="form-control" id="MainCharacter" name="MainCharacter" value="<?php echo (isset($_POST['MainCharacter'])) ? $_POST['MainCharacter'] : ''; ?>">
 
         <label for="MainCharacterAge">Age</label>
-        <input type="num" class="form-control" id="MainCharacterAge" name="MainCharacterAge" value="<?php echo (isset($_POST['MainCharacterAge'])) ? $_POST['MainCharacterAge'] : '4'; ?>">
+        <input type="num" class="form-control" id="MainCharacterAge" name="MainCharacterAge" value="<?php echo (isset($_POST['MainCharacterAge'])) ? $_POST['MainCharacterAge'] : ''; ?>">
 
         <label for="Holiday">Holiday</label>
         <select class="form-select" id="Holiday" name="Holiday" aria-label="Select Holiday">
-            <option selected>Select</option>
+            <option selected>Select a holiday</option>
             <?php echo join("\n", $holiday_options); ?>
         </select>
 
         <label for="Moral">Moral</label>
         <select class="form-select" id="Moral" name="Moral" aria-label="Select Moral">
-            <option selected>Select</option>
+            <option selected>Select a moral</option>
             <?php echo join("\n", $moral_options); ?>
         </select>
 

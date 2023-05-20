@@ -21,14 +21,14 @@ if (isset($_POST)) {
 
 $input_string = join("<br>", $inputs);
 
-$prompt = getenv('APP_PROMPT_PREFIX') . "\n" . $input_string . getenv('APP_PROMPT_SUFFIX');
+$prompt = getenv('APP_PROMPT_PREFIX') . "\n" . $input_string . ' ' . getenv('APP_PROMPT_SUFFIX');
+
 
 
 $result = $client->completions()->create([
     'model' => 'text-davinci-003',
-    'prompt' => getenv('APP_PROMPT_PREFIX') . "\n" . $input_string . getenv('APP_PROMPT_SUFFIX'),
+    'prompt' => $prompt,
     'max_tokens' => 300,
-    'temperature' => 0.5,
 ]);
 
 // var_dump($result);
@@ -38,34 +38,26 @@ $story = $result['choices'][0]['text'];
 
 // $story = 'sample';
 
-require_once(DIR_ROOT . '/src/head.php');
+require_once(DIR_ROOT . 'src/head.php');
 
 ?>
 
 <div class="container-fluid">
     <?php include_once(DIR_ROOT . 'src/header.php'); ?>
 
-    <div class="app mb-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="row">
-                        <p class="mb-0">Welcome to <?php echo getenv('APP_TITLE'); ?>, your delightful story companion for peaceful nights and magical dreams! Each story generated is created with love and care using artifical intellegence and designed to provide comfort, inspire dreams by using our vast collection of relevant prompts which ensure that every bedtime story is a unique experience, keeping children engaged and excited night after night.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="app" id="story">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="row">
-                        <div class="col-6">
+                    <div class="row story-cols">
+                        <div class="col-12 col-sm-6 mt-3">
+                            <h3>Generate another?</h3>
                             <?php include_once(DIR_ROOT . '/src/elements/form.php'); ?>
                         </div>
-                        <div class="col-6">
-                            <?php render('src/elements/story.php', $params = ['story' => $story]); include_once(DIR_ROOT . 'src/elements/story.php'); ?>
+                        <div class="col-12 col-sm-6 mt-3">
+                            <h3>Your Tiny Tale:</h3>
+                            <?php render('src/elements/story.php', $params = ['story' => $story]);
+                            include_once(DIR_ROOT . 'src/elements/story.php'); ?>
                         </div>
 
                     </div>
@@ -77,3 +69,5 @@ require_once(DIR_ROOT . '/src/head.php');
     <?php include_once(DIR_ROOT . 'src/footer.php'); ?>
 
 </div>
+
+<?php require_once(DIR_ROOT . 'src/foot.php'); ?>

@@ -20,11 +20,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-12 col-sm-6">
+                            <h3>Generate your story</h3>
                             <?php include_once(__DIR__ . '/src/elements/form.php'); ?>
                         </div>
-                        <div class="col-6">
-                            Story here
+                        <div class="col-12 col-sm-6">
+
                         </div>
 
                     </div>
@@ -35,3 +36,5 @@
 
     <?php include_once(__DIR__ . '/src/footer.php'); ?>
 </div>
+
+<?php require_once(DIR_ROOT . 'src/foot.php'); ?>

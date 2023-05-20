@@ -39,8 +39,8 @@ require_once __DIR__ . '/app.php';
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link href="./dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <link href="./dist/css/style.css" type="text/css" rel="stylesheet">
+    <link href="/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="/dist/css/style.css" type="text/css" rel="stylesheet">
 
 </head>
 
