@@ -40,8 +40,8 @@ $prompts = [
 
 foreach ($prompts as $prompt) {
     $options = [];
- 
-    
+
+
     $data = $decoded_json[$prompt['plural']];
     foreach ($data as $d) {
         if (isset($_POST[$prompt['capitalized']]) && $_POST[$prompt['capitalized']] == $d['name']) {
@@ -68,35 +68,36 @@ foreach ($prompts as $prompt) {
         <div class="container">
             <div class="row">
                 <?php
-                    $icon = [];
-                    foreach ($prompts as $prompt) {
-                        $icon[] = '<div class="col-12 col-sm-3 text-center mb-4">';
-                            $icon[] = '<a href="#" class="category-icon" data-category="' . $prompt['name'] . '">';
-                                $icon[] = '<img src="/dist/images/' . $prompt['name'] . '.svg" alt="' . $prompt['capitalized'] . '">';
-                                $icon[] = ucwords($prompt['plural']);
-                            $icon[] = '</a>';
-                        $icon[] = '</div>';
-                    }
-                    echo join("\n", $icon);
+                $icon = [];
+                foreach ($prompts as $prompt) {
+                    $icon[] = '<div class="col-12 col-sm-3 text-center mb-4">';
+                    $icon[] = '<a href="#" class="category-icon" data-category="' . $prompt['name'] . '">';
+                    $icon[] = '<img src="/dist/images/' . $prompt['name'] . '.svg" alt="' . $prompt['capitalized'] . '">';
+                    $icon[] = ucwords($prompt['plural']);
+                    $icon[] = '</a>';
+                    $icon[] = '</div>';
+                }
+                echo join("\n", $icon);
                 ?>
 
             </div>
         </div>
 
-        <label for="Holiday">Holiday</label>
-        <select class="form-select" id="Holiday" name="Holiday" aria-label="Select Holiday">
-            <option selected>Select a holiday</option>
-            <?php echo join("\n", $holiday_options); ?>
-        </select>
+        <?php
+        $selects = [];
+        foreach ($prompts as $prompt) { ?>
+            <label for="<?php echo $prompt['capitalized']; ?>"><?php echo $prompt['capitalized']; ?></label>
+            <select class="form-select" id="<?php echo $prompt['capitalized']; ?>" name="<?php echo $prompt['capitalized']; ?>" aria-label="Select <?php echo $prompt['capitalized']; ?>">
+                <option selected>Select a <?php echo $prompt['name']; ?></option>
+                <?php echo join("\n", ${"{$prompt['name']}_options"}); ?>
+            </select>
+        <?php }
+        echo join("\n", $selects);
+        ?>
 
-        <label for="Moral">Moral</label>
-        <select class="form-select" id="Moral" name="Moral" aria-label="Select Moral">
-            <option selected>Select a moral</option>
-            <?php echo join("\n", $moral_options); ?>
-        </select>
 
 
-<!-- 
+        <!-- 
         <label for="Narrator">Your Name</label>
         <input type="text" class="form-control" id="Narrator" name="Narrator" value="Tony"> -->
 
