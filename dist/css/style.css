@@ -2,6 +2,8 @@
     --main-bg-color: #253a58;
     --main-padding: 2.22rem;
     --main-border-radius: .6rem;
+    --main-icon-size: 5rem;
+    --main-transition: .2s ease-in-out;
 }
 
 body {
@@ -46,3 +48,25 @@ background: rgba(255, 255, 255, 0.8);
         flex-direction: column-reverse;
     }
 }   
+
+.category-icon {
+
+}
+.category-icon img {
+    width: var(--main-icon-size);
+    height: var(--main-icon-size);
+    filter: invert(0.5) sepia(1) saturate(1) hue-rotate(190deg);
+}
+.category-icon {
+    color: grey !important;
+    text-decoration: none;
+    opacity: .7;
+    transition: var(--main-transition);
+}
+
+.category-icon.active {
+    opacity: 1;
+}
+.category-icon.active img {
+    filter: invert(0.5) sepia(1) saturate(4) hue-rotate(190deg);
+}

@@ -20,6 +20,21 @@ $prompts = [
         'name' => 'moral',
         'plural' => 'morals',
         'capitalized' => 'Moral',
+    ],
+    'shape' => [
+        'name' => 'shape',
+        'plural' => 'shapes',
+        'capitalized' => 'Shape',
+    ],
+    'spelling' => [
+        'name' => 'spelling',
+        'plural' => 'spellings',
+        'capitalized' => 'Spelling',
+    ],
+    'color' => [
+        'name' => 'color',
+        'plural' => 'colors',
+        'capitalized' => 'Color',
     ]
 ];
 
@@ -49,6 +64,24 @@ foreach ($prompts as $prompt) {
 
         <label for="MainCharacterAge">Age</label>
         <input type="num" class="form-control" id="MainCharacterAge" name="MainCharacterAge" value="<?php echo (isset($_POST['MainCharacterAge'])) ? $_POST['MainCharacterAge'] : ''; ?>">
+
+        <div class="container">
+            <div class="row">
+                <?php
+                    $icon = [];
+                    foreach ($prompts as $prompt) {
+                        $icon[] = '<div class="col-12 col-sm-3 text-center mb-4">';
+                            $icon[] = '<a href="#" class="category-icon" data-category="' . $prompt['name'] . '">';
+                                $icon[] = '<img src="/dist/images/' . $prompt['name'] . '.svg" alt="' . $prompt['capitalized'] . '">';
+                                $icon[] = ucwords($prompt['plural']);
+                            $icon[] = '</a>';
+                        $icon[] = '</div>';
+                    }
+                    echo join("\n", $icon);
+                ?>
+
+            </div>
+        </div>
 
         <label for="Holiday">Holiday</label>
         <select class="form-select" id="Holiday" name="Holiday" aria-label="Select Holiday">

@@ -126,5 +126,20 @@
         {
             "name": "Appreciation"
         }
+    ],
+    "shapes": [
+        {
+            "name": "Circles"
+        }
+    ],
+    "colors": [
+        {
+            "name": "Red"
+        }
+    ],
+    "spellings": [
+        {
+            "name": "Cat"
+        }
     ]
 }
