@@ -13,13 +13,35 @@ $inputs = [];
 
 if (isset($_POST)) {
     foreach ($_POST as $key => $value) {
-        // Split field key name on CamelCase -> space
-        $key_split = preg_split('/(?=[A-Z])/', $key);
-        $inputs[] = implode(' ', $key_split) . ': ' . $value;
+        if ($value) {
+            switch ($key) {
+                case 'Spelling':
+                    $inputs[] = 'Learn how to spell: ' . $value;
+                    break;
+                case 'Shape':
+                    $inputs[] = 'Learn about shape: ' . $value;
+                    break;
+                case 'Color':
+                    $inputs[] = 'Learn about color: ' . $value;
+                    break;
+                case 'Moral':
+                    $inputs[] = 'Story moral: ' . $value;
+                    break;
+                default:
+                    // Split field key name on CamelCase -> space
+                    $key_split = preg_split('/(?=[A-Z])/', $key);
+                    $inputs[] = implode(' ', $key_split) . ': ' . $value;
+                    break;
+            }
+
+        }
+
     }
 }
 
 $input_string = join("<br>", $inputs);
+// var_dump($input_string);
+
 
 $prompt = getenv('APP_PROMPT_PREFIX') . "\n" . $input_string . ' ' . getenv('APP_PROMPT_SUFFIX');
 

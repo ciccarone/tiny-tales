@@ -8,6 +8,7 @@ $(document).ready(function () {
             e.preventDefault();
             var category = $(this).attr('data-category');
             $(this).toggleClass('active');
+            $('.prompt-select#' + category).toggleClass('active');
         });
     });
 });

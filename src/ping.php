@@ -13,7 +13,7 @@
 
     $prompt = getenv('OPENAI_PROMPT_PREFIX') . $input_string . getenv('OPENAI_PROMPT_SUFFIX');
 
-    var_dump($prompt);
+    // var_dump($prompt);
     
     $result = $client->completions()->create([
         // 'model' => 'text-davinci-003',
