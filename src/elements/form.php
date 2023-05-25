@@ -38,6 +38,14 @@ $prompts = [
     ]
 ];
 
+$character_types = [
+    'Girl',
+    'Boy',
+    'Woman',
+    'Man',
+    'Custom'
+];
+
 foreach ($prompts as $prompt) {
     $options = [];
 
@@ -59,22 +67,39 @@ foreach ($prompts as $prompt) {
 
 <form action="/story/index.php#story" method="POST" id="tiny-tales">
     <div class="form-group mb-3">
-        <label for="MainCharacter">Child / Character Name</label>
-        <input type="text" class="form-control" id="MainCharacter" name="MainCharacter" value="<?php echo (isset($_POST['MainCharacter'])) ? $_POST['MainCharacter'] : ''; ?>">
 
-        <label for="MainCharacterAge">Age</label>
-        <input type="num" class="form-control" id="MainCharacterAge" name="MainCharacterAge" value="<?php echo (isset($_POST['MainCharacterAge'])) ? $_POST['MainCharacterAge'] : ''; ?>">
 
+
+        <label for="MainCharacterType">Main Character</label>
+        <select class="form-select" id="MainCharacterType" name="MainCharacterType" aria-label="Select Main Character Type">
+            <option selected value="">Select a main character</option>
+            <?php foreach ($character_types as $character_type) {
+                if (isset($_POST['MainCharacterType']) && $_POST['MainCharacterType'] == $character_type) {
+                    echo '<option value="'.$character_type.'" selected>'. $character_type.'</option>';
+                } else {
+                    echo '<option value="'.$character_type.'">'. $character_type.'</option>';
+                }
+            }
+            ?>
+        </select>
+
+        <div class="MainCharacterCustom" style="display: none">
+            <label for="MainCharacterName">Character's Name</label>
+            <input type="text" class="form-control" id="MainCharacterName" name="MainCharacterName" value="<?php echo (isset($_POST['MainCharacterName'])) ? $_POST['MainCharacterName'] : ''; ?>">
+
+            <label for="MainCharacterAge">Age</label>
+            <input type="num" class="form-control" id="MainCharacterAge" name="MainCharacterAge" value="<?php echo (isset($_POST['MainCharacterAge'])) ? $_POST['MainCharacterAge'] : ''; ?>">
+        </div>
         <div class="container mt-4">
             <div class="row">
                 <?php
                 $icon = [];
                 foreach ($prompts as $prompt) {
                     $icon[] = '<div class="col-12 col-sm-3 text-center mb-4">';
-                        $icon[] = '<a href="#" class="category-icon" data-category="' . $prompt['name'] . '">';
-                            $icon[] = '<img src="/dist/images/' . $prompt['name'] . '.svg" alt="' . $prompt['capitalized'] . '">';
-                            $icon[] = ucwords($prompt['plural']);
-                        $icon[] = '</a>';
+                    $icon[] = '<a href="#" class="category-icon" data-category="' . $prompt['name'] . '">';
+                    $icon[] = '<img src="/dist/images/' . $prompt['name'] . '.svg" alt="' . $prompt['capitalized'] . '">';
+                    $icon[] = ucwords($prompt['plural']);
+                    $icon[] = '</a>';
                     $icon[] = '</div>';
                 }
                 echo join("\n", $icon);

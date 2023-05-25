@@ -47,18 +47,16 @@ $prompt = getenv('APP_PROMPT_PREFIX') . "\n" . $input_string . ' ' . getenv('APP
 
 
 
-$result = $client->completions()->create([
-    'model' => 'text-davinci-003',
-    'prompt' => $prompt,
-    'max_tokens' => 300,
-]);
-
-// var_dump($result);
+// $result = $client->completions()->create([
+//     'model' => 'text-davinci-003',
+//     'prompt' => $prompt,
+//     'max_tokens' => 300,
+// ]);
 
 
-$story = $result['choices'][0]['text'];
+// $story = $result['choices'][0]['text'];
 
-// $story = 'sample';
+$story = 'sample';
 
 require_once(DIR_ROOT . 'src/head.php');
 

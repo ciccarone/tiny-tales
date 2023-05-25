@@ -1,4 +1,13 @@
 $(document).ready(function () {
+
+
+    var selected = $('#MainCharacterType').val();
+    if (selected == 'Custom') {
+        $('.MainCharacterCustom').show();
+    } else {
+        $('.MainCharacterCustom').hide();
+    }
+
     $("#tiny-tales").on("submit", function () {
         $("#pageloader").fadeIn();
     });
@@ -11,4 +20,13 @@ $(document).ready(function () {
             $('.prompt-select#' + category).toggleClass('active');
         });
     });
+
+    $('#MainCharacterType').change(function () {
+        var selected = $(this).val();
+        if (selected == 'Custom') {
+            $('.MainCharacterCustom').show();
+        } else {
+            $('.MainCharacterCustom').hide();
+        }
+    }); 
 });
