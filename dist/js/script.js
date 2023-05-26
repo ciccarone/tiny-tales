@@ -29,4 +29,16 @@ $(document).ready(function () {
             $('.MainCharacterCustom').hide();
         }
     }); 
+    $('.form-select').each(function () {
+        $(this).change(function () {
+            var selected = $(this).val();
+            var selected_id = $(this).attr('id');
+            if (selected == 'custom') {
+                $('input[name="' + selected_id + 'Custom').show();
+            } else {
+                $('input[name="' + selected_id + 'Custom').hide();
+            }
+        }); 
+    });
+
 });

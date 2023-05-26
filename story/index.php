@@ -16,16 +16,24 @@ if (isset($_POST)) {
         if ($value) {
             switch ($key) {
                 case 'Spelling':
-                    $inputs[] = 'Learn how to spell: ' . $value;
+                    $value = check_custom_data($value, 'Spelling', $_POST);
+                    $inputs[] = 'Learn how to spell word: ' . $value;
                     break;
                 case 'Shape':
+                    $value = check_custom_data($value, 'Shape', $_POST);
                     $inputs[] = 'Learn about shape: ' . $value;
                     break;
                 case 'Color':
+                    $value = check_custom_data($value, 'Color', $_POST);
                     $inputs[] = 'Learn about color: ' . $value;
                     break;
                 case 'Moral':
+                    $value = check_custom_data($value, 'Moral', $_POST);
                     $inputs[] = 'Story moral: ' . $value;
+                    break;
+                case 'Holiday':
+                    $value = check_custom_data($value, 'Holiday', $_POST);
+                    $inputs[] = 'Story holiday: ' . $value;
                     break;
                 default:
                     // Split field key name on CamelCase -> space
@@ -39,24 +47,37 @@ if (isset($_POST)) {
     }
 }
 
+
+// Remove custom selections from input->prompt
+foreach ($inputs as $key => $item) {
+    if (strstr($item, 'Custom'))
+    unset($inputs[$key]);
+}
+
+
+
+function check_custom_data($value, $field, $post)
+{
+    
+    return ($value == 'custom') ? $post[$field . 'Custom'] : $value;
+}
+
 $input_string = join("<br>", $inputs);
-// var_dump($input_string);
 
 
-$prompt = getenv('APP_PROMPT_PREFIX') . "\n" . $input_string . ' ' . getenv('APP_PROMPT_SUFFIX');
+$prompt = getenv('APP_PROMPT_PREFIX') . "<br>" . $input_string . ' ' . "<br>" . getenv('APP_PROMPT_SUFFIX');
 
 
+$result = $client->completions()->create([
+    'model' => 'text-davinci-003',
+    'prompt' => $prompt,
+    'max_tokens' => 300,
+]);
 
-// $result = $client->completions()->create([
-//     'model' => 'text-davinci-003',
-//     'prompt' => $prompt,
-//     'max_tokens' => 300,
-// ]);
 
+$story = $result['choices'][0]['text'];
 
-// $story = $result['choices'][0]['text'];
-
-$story = 'sample';
+// $story = 'sample';
 
 require_once(DIR_ROOT . 'src/head.php');
 

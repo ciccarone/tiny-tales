@@ -75,9 +75,9 @@ foreach ($prompts as $prompt) {
             <option selected value="">Select a main character</option>
             <?php foreach ($character_types as $character_type) {
                 if (isset($_POST['MainCharacterType']) && $_POST['MainCharacterType'] == $character_type) {
-                    echo '<option value="'.$character_type.'" selected>'. $character_type.'</option>';
+                    echo '<option value="' . $character_type . '" selected>' . $character_type . '</option>';
                 } else {
-                    echo '<option value="'.$character_type.'">'. $character_type.'</option>';
+                    echo '<option value="' . $character_type . '">' . $character_type . '</option>';
                 }
             }
             ?>
@@ -116,7 +116,10 @@ foreach ($prompts as $prompt) {
                 <select class="form-select" id="<?php echo $prompt['capitalized']; ?>" name="<?php echo $prompt['capitalized']; ?>" aria-label="Select <?php echo $prompt['capitalized']; ?>">
                     <option selected value="">Select a <?php echo $prompt['name']; ?></option>
                     <?php echo join("\n", ${"{$prompt['name']}_options"}); ?>
+                    <option value="custom">Custom <?php echo $prompt['capitalized']; ?></option>
                 </select>
+
+                <input type="text" name="<?php echo $prompt['capitalized']; ?>Custom" class="form-control <?php echo $prompt['capitalized']; ?>Custom" style="display: none" placeholder="Enter a custom <?php echo $prompt['name']; ?>">
             </div>
         <?php }
         echo join("\n", $selects);
